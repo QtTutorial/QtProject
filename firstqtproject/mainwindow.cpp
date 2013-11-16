@@ -1,16 +1,18 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     ui->comboBox->setEnabled(false);
     QStringList cityname;
-    cityname<<"Keelung"<<"Taipei"<<"Xinbei";
+    cityname<<QStringLiteral("基隆市")<<QStringLiteral("台北市")<<QStringLiteral("新北市");
+    //cityname.
     ui->comboBox->addItems(cityname);
+
 }
 MainWindow::~MainWindow()
 {
