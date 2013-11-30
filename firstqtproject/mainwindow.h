@@ -21,6 +21,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    bool DBConnection(QStringList &citylist);
 };
 
 #endif // MAINWINDOW_H
