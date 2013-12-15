@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStringList>
+#include "YTDBConnection.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    bool DBConnection(QStringList &citylist);
+    YTDBConnection *db;
 };
 
 #endif // MAINWINDOW_H

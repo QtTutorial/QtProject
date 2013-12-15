@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    YTDBConnection.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    YTDBConnection.h
 
 FORMS    += mainwindow.ui
