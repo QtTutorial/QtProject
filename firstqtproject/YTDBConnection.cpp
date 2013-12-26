@@ -15,10 +15,10 @@ void YTDBConnection::CloseDB()
 {
     db.close();
 }
-bool YTDBConnection::getDataList(QStringList &d_list)
+bool YTDBConnection::getData(QStringList &d_list)
 {
     bool ret=false;
-    if(db.open())
+    if(db.isOpen())//Open database
     {
         QSqlQuery query("Select City_CName from Taiwan_City");
         while(query.next())
@@ -26,6 +26,21 @@ bool YTDBConnection::getDataList(QStringList &d_list)
             d_list.append(query.value(0).toString().trimmed());
             ret=true;
         }
+    }
+    return ret;
+}
+
+bool YTDBConnection::getData(QTableView *srcTable,QString currentText)
+{
+    bool ret=false;
+    if(db.isOpen())//Open database
+    {
+        QSqlTableModel *model=new QSqlTableModel(srcTable,db);
+        model->setTable("Taiwan_PostCode");
+        model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        model->select();
+        model->setFilter("City_CName='"+currentText+"'");
+        srcTable->setModel(model);
     }
     return ret;
 }

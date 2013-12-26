@@ -14,11 +14,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringList cityname;
     if(db->OpenDB())
     {
-        if(db->getDataList(cityname))
+        if(db->getData(cityname))
         {
             ui->comboBox->addItems(cityname);
         }
     }
+}
+void MainWindow::on_comboBox_currentIndexChanged()
+{
+     db->getData(ui->tableView,ui->comboBox->currentText());
 }
 MainWindow::~MainWindow()
 {
@@ -31,3 +35,4 @@ void MainWindow::on_checkBox_clicked(bool checked)
     if(checked)  ui->comboBox->setEnabled(true);
     else ui->comboBox->setEnabled(false);
 }
+
